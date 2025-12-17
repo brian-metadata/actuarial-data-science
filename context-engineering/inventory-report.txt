@@ -1,0 +1,402 @@
+Summary Report: Actuarial Inventory Follow-Up 
+
+Prepared by: Brian Brewer 
+Date: December 08, 2025 
+
+Original Request 
+
+Another follow-up request related to the current state of Actuarial. Please reach out to Viren and Kishore today and collect a list of all the Actuarial inventory of software assets they use for all their use cases and classify them accordingly. This should have been already gathered as part of the current state by Cognizant. If there are any gaps in what Cognizant gathered, reach out to Andrew Doodnaught/Dillon Garrett first and then as needed Robin. Thank you. 
+
+What Was Done 
+
+- Reviewed current-state artifacts (Actuarial_Inventory_Summary.xlsx, PAS Report Inventory – Actuarial.xlsx, Actuarial Summary.xlsx, Actuarial Data Source Documentation.xlsx, Current_state_understanding_Actuarial_Finance.pptx, ETL/BI inventory decks). 
+- Classified assets by use case: Analytics, Modeling, Pricing, Reserving, Statistical Reporting, and BI/Reporting. 
+- Identified major gaps in lineage, governance, external feed contracts, BI per-object lineage, and downstream consumer mappings. 
+- Developed recommendations for modernization (rewrite vs. legacy mapping), DataOps rigor, and data assembly line/harness to migrate, refactor, and test actuarial data products. 
+ 
+
+Classified Inventory Snapshot 
+
+Use Case 
+
+Representative Assets 
+
+Primary Tools/Platforms 
+
+Key Data Sources 
+
+Analytics 
+
+Regrade series (AU/GL/WC), RPM, PropertyDashboard, Board KPI jobs 
+
+SAS, R, Python, Excel, Cognos 
+
+ODS, DWH, Oracle, EW3, Workbench 
+
+Modeling 
+
+PREDMOD_AU_REN_V5.2.sas, auto_claims_run.sas, litigation/reserving jobs 
+
+SAS, R, Python, Oracle 
+
+ODDPHNX, ODDODS, CLAIMCTR, DMSUM 
+
+Pricing 
+
+NRT quote pricing jobs, rate impact/review scripts, umbrella renewal code 
+
+SAS, Pentaho, ODSQ, DWH 
+
+ODSQ, DMSUM, external feeds 
+
+Reserving 
+
+Triangle extraction, ceded balancing, Arius imports, emergence checks 
+
+SAS, Arius, Oracle, DWH 
+
+CLAIMCTR, ODS, DMSUM, Arius files 
+
+Statistical Reporting 
+
+ISO/NCCI call jobs, exposure derivations, state/bureau flows 
+
+SAS, Excel, Cognos 
+
+ODS, DWH, statrep libraries, UNC paths 
+
+BI/Reporting 
+
+Cognos cubes/reports, Pentaho ETL jobs, dashboards, powerplay reports 
+
+Cognos, Pentaho, SAS, Oracle 
+
+ODS, DWH, various static tables 
+
+Key Observations 
+
+- Partial documentation: Some job/table lineage exists; attribute-level mappings largely missing. 
+- Governance gaps: Limited stewardship, DQ rules, and SLA tracking—especially for external feeds. 
+- Legacy complexity: Thousands of SAS jobs and BI objects; mapping everything would be unsustainable. 
+- Modernization imperative: Cloud migration and paradigm shift necessitate new pipelines rather than legacy replication. 
+ 
+
+Why Mapping Everything Is Unsustainable (Actuarial Reality) 
+
+- Statistical drift & model evolution: Requirements change continuously; actuarial models must be recalibrated and validated iteratively. 
+- Iterative, hands-on data science: Requirements emerge through experimentation; much logic resides in SAS/R/Python code, not schemas. 
+- Platform & tool changes: Cloud-native paradigms (ACID/Time Travel, ELT, catalogs) render static legacy mappings obsolete. 
+- Double technical debt risk: Replicating legacy flows in the cloud creates parallel maintenance and slows modernization. 
+ 
+
+Level of Complexity of Gaps & Why They Likely Exist 
+
+1) Heterogeneous Legacy Landscape: Multiple source systems (Claim Center, Policy Decisions, Workbench, Billing), diverse schemas, and bespoke scripts accumulated over years make uniform lineage difficult. 
+2) Undocumented/Ad Hoc Logic: Business rules embedded in legacy SAS macros, R/Python notebooks, and Excel workflows were not consistently documented or versioned. 
+3) External Feeds & Regulatory Submissions: AM Best, ISO, NCCI, Carfax/MVR and bureau processes involve manual handling, file drops, and episodic updates—hard to capture in a single lineage framework. 
+4) BI Lineage Granularity: Cognos/Pentaho objects often lack per-object upstream mapping and L3 filter/transform details, complicating traceability. 
+5) Human Knowledge Silos: Key context resides with SMEs; staff transitions and domain breadth leave coverage gaps. 
+6) Tooling Limitations Historically: Prior platform constraints and absence of an enterprise catalog/governance layer undermined sustainable documentation. 
+ 
+
+Recommended Approach: Data Assembly Line & Harness 
+
+- Establish a cloud-native data assembly line: standardized ingestion, ELT transformation, automated DQ tests, and contract-driven gold datasets. 
+- Build a harness for migration/refactor/test: CI/CD for data products, regression baselines, statistical validation suites, and repeatable experiment tracking. 
+- Leverage platform capabilities: governance catalog + lineage, ACID tables with Time Travel, and feature stores for reusable, point-in-time-correct features. 
+- Focus on new pipelines feeding new actuarial use cases; retire legacy flows progressively to avoid double technical debt. 
+ 
+
+Benefits of Governance, Cataloging & Modern Tools (Actuarial Focus) 
+
+- Faster onboarding & iteration via DataOps (CI/CD, automated tests, observability). 
+- Repeatable experimentation with Time Travel and versioned datasets/models. 
+- Improved compliance & explainability through unified catalog, lineage, RBAC/ABAC. 
+- Consistency and speed with standardized wrangling and certified gold datasets. 
+- Feature store accelerates modeling, ensures point-in-time correctness, and reduces drift risks. 
+ 
+
+Next Steps 
+
+1) Confirm missing inventories with Viren and Kishore; document owners and consumers. 
+2) Prioritize 1–2 high-impact actuarial use cases (e.g., Auto renewal pricing, WC reserving) for modernization. 
+3) Stand up platform capabilities (catalog/lineage, RBAC/ABAC, ACID/Time Travel, DataOps). 
+4) Publish standardized datasets and feature store entries; instrument DQ and contracts. 
+5) Cut over BI/reporting and retire legacy flows iteratively. 
+ 
+
+Summary Statement 
+
+Modernization is not a migration—it is a rewrite. Establishing data engineering rigor and a DataOps-driven assembly line, supported by governance, cataloging, ACID/Time Travel tables, standardized datasets, and feature stores, enables fast, reproducible actuarial modeling while avoiding double technical debt. Focus new pipelines on new use cases, and retire legacy flows progressively. 
+
+ 
+
+Addendum: Detailed Inventory Evidence 
+
+Source Files Reviewed 
+
+Actuarial_Inventory_Summary.xlsx  
+
+Functional area breakdown:  
+
+Analytics: 177 items 
+
+Modeling: 87 items 
+
+Pricing: 59 items 
+
+Reserving: 140 items 
+
+Statistical Reporting: 41 items 
+
+Complexity bands:  
+
+Simple (<500 LOC) 
+
+Medium (501–1000 LOC) 
+
+Complex (1001–2000 LOC) 
+
+Very Complex (>2000 LOC) 
+
+Captured attributes:  
+
+Name, Item Type, Folder hierarchy, File Type, Status, LOC, Complexity, Schedule (Ad hoc, Daily, Monthly, Quarterly, Annual) 
+
+Folder examples:  
+
+Claims_Auto 
+
+UW_Auto 
+
+Risk Control 
+
+Pricing Results 
+
+Board KPI 
+
+Shape 
+
+PAS Report Inventory – Actuarial.xlsx  
+
+Detailed mapping of programs, tables, fields, and SAS code used for predictive modeling (e.g., PREDMOD_AU_REN_V5.2.sas) 
+
+Captures policy-level attributes:  
+
+POLICY_NUMBER 
+
+RATING_STATE 
+
+VEHICLE_NUMBER 
+
+ZIP_CODE 
+
+PREMIUM details 
+
+Includes business owner, internal/external impact, and predictive model linkage. 
+
+Shape 
+
+Sanitized_Actuarial_Code_Inventory  
+
+Cleaned-up list of actuarial SAS/R/Python scripts used across use cases. 
+
+Links to production code repositories for underwriting and predictive modeling. 
+
+Shape 
+
+Current_state_understanding_Actuarial_Finance.pptx  
+
+Shows data dependencies:  
+
+Heavy reliance on ODS, Data Warehouse, SAS for wrangling, modeling, and reporting. 
+
+External sources integrated:  
+
+AM Best, ISO, NCCI, Carfax, DMV, MarketStance. 
+
+Functional areas:  
+
+Analytics, Modeling, Pricing, Reserving, Stat-Reporting (scheduled/ad-hoc). 
+
+Notes lack of formal data governance and manual handling for regulatory reporting. 
+
+Shape 
+
+Captured Dimensions Across Inventories 
+
+Code Assets: SAS, R, Python scripts 
+
+Reports & Dashboards: Cognos, Excel 
+
+Predictive Models: Auto, WC, GL 
+
+Data Sources: ODS, DW, external feeds 
+
+Complexity & Scheduling Metadata: LOC bands, cadence (Ad hoc/Daily/Monthly/Quarterly/Annual) 
+
+Shape 
+
+Purpose 
+
+Supports: 
+
+Pricing & Reserving 
+
+Risk Modeling 
+
+Regulatory & Statistical Reporting 
+
+Predictive Analytics 
+
+ 
+
+Summary Table 
+
+Functional Area 
+
+Approx. Assets 
+
+Examples 
+
+Analytics 
+
+177 
+
+SAS/R scripts, dashboards 
+
+Modeling 
+
+87 
+
+Predictive models (Auto, WC, GL) 
+
+Pricing 
+
+59 
+
+Pricing programs, rate tables 
+
+Reserving 
+
+140 
+
+Loss reserving models 
+
+Statistical Reporting 
+
+41 
+
+Regulatory/statistical reports 
+
+ 
+
+Key Attributes Captured 
+
+Asset name and type 
+
+Folder hierarchy and file type 
+
+Complexity (LOC ranges) 
+
+Schedule (Ad hoc/Daily/Monthly/Quarterly/Annual) 
+
+Business owner and impact 
+
+Predictive model linkage 
+
+Data source references (ODS, DW, external feeds) 
+
+ 
+
+Quick Reference: Actuarial Inventory Document Locations 
+
+SharePoint Folder Paths: 
+
+IT Department Hub Site → Initiatives in Progress → 1 Front-End Art → ALDM → Data Modernization → 01 – BRM → 01 – Initiation → 01 Inventory → Actuarial 
+
+Actuarial_Inventory_Summary.xlsx 
+
+PAS Report Inventory - Actuarial.xlsx 
+
+Sanitized_Actuarial_Code_Inventory 
+
+IT Department Hub Site → Initiatives in Progress → 1 Front-End Art → ALDM → Data Modernization → 01 – BRM → 01 – Initiation → Current State Docs 
+
+Current_state_understanding_Actuarial_Finance.pptx 
+
+ 
+
+“These folders contain the authoritative inventories and current-state documentation provided by Cognizant and validated through SME outreach (Viren and Kishore). They form the basis of the classification and gap analysis in this report.” 
+
+ 
+
+Addendum: Quick Reference & SME Confirmation 
+
+Quick Reference: Actuarial Inventory Document Locations 
+
+SharePoint Folder Paths: 
+
+IT Department Hub Site → Initiatives in Progress → 1 Front-End Art → ALDM → Data Modernization → 01 – BRM → 01 – Initiation → 01 Inventory → Actuarial 
+
+Actuarial_Inventory_Summary.xlsx 
+
+PAS Report Inventory - Actuarial.xlsx 
+
+Sanitized_Actuarial_Code_Inventory 
+
+IT Department Hub Site → Initiatives in Progress → 1 Front-End Art → ALDM → Data Modernization → 01 – BRM → 01 – Initiation → Current State Docs 
+
+Current_state_understanding_Actuarial_Finance.pptx 
+
+Shape 
+
+SME Confirmation 
+
+Kishore confirmed: 
+
+“Planned assessment was completed. Actuarial team wanted to capture lineage and not detailed transform. However, there is a gap on capturing transformations as they may be required for modeling. It is currently not an ongoing activity.” 
+
+Shape 
+
+Implications 
+
+Lineage captured: High-level lineage (job → table → field) exists. 
+
+Transformation gap: Detailed transformation logic is missing, which is critical for:  
+
+Predictive modeling 
+
+Feature engineering 
+
+Regulatory reproducibility 
+
+Not ongoing: Transformation documentation is not being maintained, meaning this gap will persist unless addressed strategically. 
+
+Shape 
+
+Why These Gaps Exist 
+
+Historical focus on lineage for compliance, not full transformation capture. 
+
+Legacy complexity: Thousands of SAS jobs with embedded business logic. 
+
+Tooling limitations: No enterprise-wide governance or metadata framework in place. 
+
+Knowledge silos: Transformation details often reside with SMEs and in code comments. 
+
+Shape 
+
+Strategic Impact 
+
+Reverse-engineering transformations for modeling add significant effort and risk. 
+
+Reinforces the need for:  
+
+Modern pipelines with governance and DataOps rigor 
+
+Feature stores and standardized datasets 
+
+Assembly line approach for migration and refactoring 
+
+ 

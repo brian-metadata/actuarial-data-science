@@ -1,0 +1,27 @@
+---
+config:
+  theme: forest
+  layout: fixed
+  look: classic
+---
+flowchart TB
+ subgraph subGraph0["Notes and NLP"]
+    direction LR
+        D["<b>MODEL DEV (7-12 Months)</b> <br>RStudio &amp; Jupyter <br> Data Science Model Development  <br>- Feature Engineering <br>- ML Dataprep <br>- Algorithms XGboost, LightGBM,Random Forest etc <br> - Training &amp; Scoring Models <br> - Refinement  <br> - Iterations Takes up to a year for final Model"]
+        N1["Claim Notes Extraction NLP Python R"]
+        C["SAS Data Cleaning Enrichment Lookups"]
+        N2["Attorney Legal Info SAS Python"]
+  end
+    A["Source Systems Oracle ODS ClaimCenter"] --> B["SAS Data Extraction Wrangling Joins"]
+    B --> C
+    C --> D
+    D --> E["AKUR8 Insurance Pricing Models GLM GAM, Model Training Days"]
+    E --> G["Model Selection Compare AKUR8 Custom ML Industry Models"]
+    F["Training on AKUR8<br> Up to 3-4 Days"] --> G
+    G --> H["Model Training Batch R Python AKUR8"]
+    H --> I["Model Scoring Batch R Python AKUR8"]
+    I --> J["Post Processing Business Rules Capping Alerts Python R"]
+    J --> K["Write Results CSV Database Downstream Systems SAS"]
+    K --> L["Reporting Regulatory Claims Ops Integration"]
+    N1 --> D
+    N2 --> C
