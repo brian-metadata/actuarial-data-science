@@ -1,0 +1,18 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "source": "Git Bash",
+      "args": ["--login", "-i"]
+    },
+    "Git Bash (PortableGit)": {
+      "path": "${env:USERPROFILE}\\Apps\\Git\\PortableGit\\bin\\bash.exe",
+      "args": ["--login", "-i"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash (PortableGit)",
+  "terminal.integrated.automationProfile.windows": {
+    "path": "${env:USERPROFILE}\\Apps\\Git\\PortableGit\\bin\\bash.exe",
+    "args": ["--login", "-i"]
+  },
+  "terminal.integrated.useWorkspaceProfiles": true
+}

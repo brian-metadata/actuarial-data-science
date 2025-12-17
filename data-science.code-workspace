@@ -4,5 +4,17 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"terminal.integrated.profiles.windows": {
+			"Git Bash (PortableGit)": {
+				"path": "${env:USERPROFILE}\\Apps\\Git\\PortableGit\\bin\\bash.exe",
+				"args": ["--login", "-i"]
+			}
+		},
+		"terminal.integrated.defaultProfile.windows": "Git Bash (PortableGit)",
+		"terminal.integrated.automationProfile.windows": {
+			"path": "${env:USERPROFILE}\\Apps\\Git\\PortableGit\\bin\\bash.exe",
+			"args": ["--login", "-i"]
+		}
+	}
 }
