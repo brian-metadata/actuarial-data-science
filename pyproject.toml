@@ -7,7 +7,7 @@ description = "Poetry-based data science environment"
 authors = ["Brian Brewer <bbrewer1@example.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.14,<3.15"
+python = ">=3.12,<3.15"
 numpy = "*"
 pandas = "*"
 matplotlib = "*"
