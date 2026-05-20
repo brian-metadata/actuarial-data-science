@@ -1,123 +1,82 @@
+# Data Science Environment
 
-# Data Science Environment Setup with Poetry & JupyterLab
+A Poetry-based data science environment for Windows with support for multiple projects.
 
-This README documents two approaches for setting up a Python-based data science environment on Windows using Poetry and JupyterLab:
+## 🚀 Quick Start
 
-- PowerShell Bootstrap Script – Automates the setup.
-- Manual Commands (cmd / Windows Terminal) – For step-by-step configuration.
+**New to this project?** Start here: **[docs/START_HERE.md](docs/START_HERE.md)**
 
-## ✅ 1. PowerShell Bootstrap Script
+**Need a quick reference?** See: **[docs/QUICK_START.md](docs/QUICK_START.md)**
 
-Run the script:
+## 📁 Project Structure
 
-```powershell
-# Allow script execution for this session
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-
-# Run the bootstrap script
-./data-science-bootstrap.ps1
+```
+data-science/
+├── actuarial-inventory/          # Actuarial inventory analysis project
+├── lakehouse-gap-analysis/       # Lakehouse ingestion gap analysis project
+├── docs/                         # Documentation
+│   ├── START_HERE.md            # Complete setup guide
+│   ├── QUICK_START.md           # Quick reference
+│   ├── SETUP.md                 # Comprehensive setup guide
+│   ├── bash-setup.md            # Git Bash setup
+│   ├── configuration.md         # Configuration guide
+│   └── DOCUMENTATION_INDEX.md   # Documentation index
+├── pyproject.toml                # Poetry dependencies
+└── README.md                     # This file
 ```
 
-### Script Content:
+## 📚 Documentation
 
-```powershell
-<# Bootstrap a Poetry-based data science environment on Windows #>
+All documentation is in the `docs/` folder:
 
-# Install Poetry
-$installerUrl = 'https://install.python-poetry.org'
-$installerFile = Join-Path $env:TEMP ("install-poetry-{0}.py" -f ([System.Guid]::NewGuid()))
-Invoke-WebRequest -Uri $installerUrl -OutFile $installerFile
-& py $installerFile
+- **[START_HERE.md](docs/START_HERE.md)** - Complete setup guide (start here!)
+- **[QUICK_START.md](docs/QUICK_START.md)** - Quick reference guide
+- **[SETUP.md](docs/SETUP.md)** - Comprehensive setup documentation
+- **[DOCUMENTATION_INDEX.md](docs/DOCUMENTATION_INDEX.md)** - Full documentation index
 
-# Locate poetry.exe
-$poetry = "$env:APPDATA\pypoetry\venv\Scripts\poetry.exe"
+## ⚡ Quick Setup
 
-# Create project folder
-$proj = "C:\\Users\\bbrewer1\\data-science"
-New-Item -ItemType Directory -Force -Path $proj | Out-Null
-Set-Location $proj
+This project uses Poetry for dependency management. To get started:
 
-# Initialize Poetry project
-& $poetry init --name "data-science" --description "Poetry-based data science environment" --license "Proprietary" --no-interaction
-& $poetry config virtualenvs.in-project true
-& $poetry env use 3.14
-
-# Add dependencies
-& $poetry add numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel
-
-# Register Jupyter kernel
-& $poetry run python -m ipykernel install --user --name data-science-py314 --display-name "data-science (Python 3.14)"
-
-# Launch JupyterLab
-& $poetry run jupyter lab
-```
-
-## ✅ 2. Manual Setup (cmd / Windows Terminal)
-
-If you already created `pyproject.toml` in `C:\Users\bbrewer1\data-science`, run:
-
-```cmd
-cd C:\Users\bbrewer1\data-science
-
-:: Ensure Poetry uses local virtualenv
-poetry config virtualenvs.in-project true
-
-:: Create virtual environment with Python 3.14
-poetry env use 3.14
-
-:: Install dependencies from pyproject.toml
+```bash
+# Install dependencies
 poetry install
 
-:: Register Jupyter kernel
-poetry run python -m ipykernel install --user --name data-science-py314 --display-name "data-science (Python 3.14)"
+# Register Jupyter kernel
+poetry run python -m ipykernel install --user --name data-science --display-name "Python (Poetry - data-science)"
 
-:: Launch JupyterLab
+# Launch Jupyter Lab
 poetry run jupyter lab
 ```
 
-## ✅ Example pyproject.toml
+## 🔧 Dependencies
 
-```toml
-[tool.poetry]
-name = "data-science"
-version = "0.1.0"
-description = "Poetry-based data science environment"
-authors = ["Brian Brewer <bbrewer1@example.com>"]
+See `pyproject.toml` for the complete list. Key packages include:
+- **Data Science**: numpy, pandas, matplotlib, seaborn, scikit-learn
+- **Notebooks**: jupyterlab, ipykernel
+- **Visualization**: networkx (for graph analysis)
+- **Excel**: openpyxl (for Excel file generation)
 
-[tool.poetry.dependencies]
-python = ">=3.14,<3.15"
-numpy = "*"
-pandas = "*"
-matplotlib = "*"
-seaborn = "*"
-scikit-learn = "*"
-jupyterlab = "*"
-ipykernel = "*"
+## 📝 Projects
 
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
-```
+### Actuarial Inventory
+Location: `actuarial-inventory/`
+- Actuarial inventory analysis notebooks
+- Charts and outputs
+- Context engineering materials
 
-## ✅ Verify Installation
+### Lakehouse Gap Analysis
+Location: `lakehouse-gap-analysis/notebooks/`
+- Ingestion impact plan analysis
+- Metadata master sheet
+- Gap analysis and triples mapping
 
-```bash
-poetry run python -c "import sys; print(sys.version)"
-poetry run pip list
-```
+## 🛠️ Development
 
-## Optional Extras
+This environment uses:
+- **Poetry** for dependency management
+- **Python 3.14** (via Poetry)
+- **Jupyter Lab** for interactive notebooks
+- **VS Code** workspace configuration included
 
-Add more packages later:
-
-```bash
-poetry add scipy statsmodels plotly
-poetry add --group dev black ruff
-```
-
-**Tip:** To install JupyterLab extensions, you may need Node.js:
-
-```bash
-
-
-
+For detailed setup instructions, see the [documentation](docs/).

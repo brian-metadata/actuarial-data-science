@@ -1,4 +1,4 @@
-# íº€ START HERE - Complete Python & Data Science Environment
+# ï¿½ï¿½ï¿½ START HERE - Complete Python & Data Science Environment
 
 ## â±ï¸ Setup Time: ~20 minutes | No Admin Required
 
@@ -6,7 +6,7 @@ Welcome! This is your complete guide to setting up a professional data science e
 
 ---
 
-## í³Œ Quick Overview
+## ï¿½ï¿½ï¿½ Quick Overview
 
 This workspace includes:
 - âœ… **Git Bash** - Unix-like shell on Windows + version control
@@ -19,11 +19,11 @@ This workspace includes:
 
 ---
 
-## í¾¯ Choose Your Path
+## ï¿½ï¿½ï¿½ Choose Your Path
 
-### í¿ƒ **Path 1: Just Get Started (5 minutes)**
+### ï¿½ï¿½ï¿½ **Path 1: Just Get Started (5 minutes)**
 
-Read â†’ **[QUICK_START.md](QUICK_START.md)**
+Read â†’ **[QUICK_START.md](QUICK_START.md)** (in this docs folder)
 
 This one-page guide has:
 - 5-step installation checklist
@@ -34,9 +34,9 @@ This one-page guide has:
 
 ---
 
-### í³– **Path 2: Complete Setup Guide (20-30 minutes)**
+### ï¿½ï¿½ï¿½ **Path 2: Complete Setup Guide (20-30 minutes)**
 
-Read â†’ **[SETUP.md](SETUP.md)** 
+Read â†’ **[SETUP.md](SETUP.md)** (in this docs folder) 
 
 This 2,000+ line comprehensive guide includes:
 - **Part A:** Bash installation (steps 1-8, recommended)
@@ -52,7 +52,7 @@ This 2,000+ line comprehensive guide includes:
 
 ---
 
-### í³‹ **Path 3: Find What You Need**
+### ï¿½ï¿½ï¿½ **Path 3: Find What You Need**
 
 Read â†’ **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)**
 
@@ -66,7 +66,7 @@ This index includes:
 
 ---
 
-## í¾® Installation in 3 Steps
+## ï¿½ï¿½ï¿½ Installation in 3 Steps
 
 ### Step 1: Install 5 Tools (10 minutes)
 
@@ -119,11 +119,11 @@ git commit -m "Initial project setup"
 poetry run jupyter lab
 ```
 
-Browser opens â†’ Create notebook â†’ Select "Python (data-science)" kernel â†’ Start coding! í¾‰
+Browser opens â†’ Create notebook â†’ Select "Python (data-science)" kernel â†’ Start coding! ï¿½ï¿½ï¿½
 
 ---
 
-## í³š What You Get
+## ï¿½ï¿½ï¿½ What You Get
 
 ### Tools
 - Git 2.52.0+ (version control)
@@ -152,7 +152,7 @@ Browser opens â†’ Create notebook â†’ Select "Python (data-science)" kernel â†’ 
 
 ---
 
-## í²¡ Key Commands
+## ï¿½ï¿½ï¿½ Key Commands
 
 ```bash
 # Daily workflow
@@ -176,7 +176,7 @@ F5                              # Debug
 
 ---
 
-## í¶˜ Common Issues (Quick Fixes)
+## ï¿½ï¿½ï¿½ Common Issues (Quick Fixes)
 
 | Issue | Fix |
 |-------|-----|
@@ -188,7 +188,7 @@ F5                              # Debug
 
 ---
 
-## í³– Documentation Files
+## ï¿½ï¿½ï¿½ Documentation Files
 
 | File | Size | Purpose |
 |------|------|---------|
@@ -202,7 +202,7 @@ F5                              # Debug
 
 ---
 
-## í¾“ Next Steps
+## ï¿½ï¿½ï¿½ Next Steps
 
 1. **Now:** Follow one of the 3 paths above
 2. **In 20 mins:** Have working environment
@@ -224,7 +224,7 @@ F5                              # Debug
 
 ---
 
-## íº€ Ready to Go?
+## ï¿½ï¿½ï¿½ Ready to Go?
 
 ### Pick One:
 
@@ -239,7 +239,7 @@ F5                              # Debug
 
 ---
 
-## í³ Resources
+## ï¿½ï¿½ï¿½ Resources
 
 - **Python:** https://docs.python.org/
 - **Poetry:** https://python-poetry.org/docs/
@@ -251,4 +251,4 @@ F5                              # Debug
 
 **Status:** âœ… Complete | **No Admin:** âœ… Required | **Time:** â±ï¸ ~20 minutes
 
-Let's build something amazing! í¾¯
+Let's build something amazing! ï¿½ï¿½ï¿½
